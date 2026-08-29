@@ -2,40 +2,15 @@
 
 import { useEffect, useState } from "react";
 
-const poem = [
-  "तुझ्या त्या इंस्टाग्राम च्या पोस्ट मधे ,",
-  "काहीतरी खास जाणवलं,",
-  "एक फोटो पाहिला तुझा,",
-  "आणि नकळत मन फोटो मधे हरवलं… ❤️",
-  "साडीमधे तुझ रूप काही वेगळंच दिसलं,",
-  "नाकातली नथ आणि कपाळावरची चंद्रकोर",
-  "पाहून मन तिथेच थांबलं… 🌙",
-  "खरं तर,",
-  "तुझ्या डोळ्यांत काहीतरी खास आहे,",
-  "जे फोटोमधूनही जाणवल …",
-  "म्हणूनच मनाला सारखं वाटतं,",
-  "तुझ्यासोबत बोलावं… ❤️",
-];
-
 export default function Home() {
   const [page, setPage] = useState(1);
-  const [poemIndex, setPoemIndex] = useState(0);
 
   const nextPage = () => {
     setPage((prev) => prev + 1);
   };
 
-  const nextPoem = () => {
-    if (poemIndex < poem.length - 1) {
-      setPoemIndex((prev) => prev + 1);
-    } else {
-      setPage(6);
-    }
-  };
-
   const restart = () => {
     setPage(1);
-    setPoemIndex(0);
   };
 
   useEffect(() => {
@@ -45,10 +20,7 @@ export default function Home() {
   return (
     <main className="site">
 
-      <div className="ambient ambientOne"></div>
-      <div className="ambient ambientTwo"></div>
-      <div className="ambient ambientThree"></div>
-
+      {/* Floating Hearts */}
       <div className="hearts">
         <span>❤️</span>
         <span>💕</span>
@@ -61,16 +33,14 @@ export default function Home() {
 
       {/* PAGE 1 */}
       {page === 1 && (
-        <section className="section intro">
-          <div className="tiny-top">
-            <span>एक छोटीशी गोष्ट</span>
-            <span>FOR VIDHI ❤️</span>
-          </div>
-
+        <section className="section center">
           <div className="content">
+
             <div className="heart">❤️</div>
 
-            <p className="overline">THERE IS SOMETHING...</p>
+            <p className="small">
+              THERE IS SOMETHING...
+            </p>
 
             <h1>
               Hii Vidhi
@@ -87,12 +57,7 @@ export default function Home() {
             <button onClick={nextPage}>
               Next <span>→</span>
             </button>
-          </div>
 
-          <div className="bottom-note">
-            <span>01</span>
-            <div></div>
-            <span>एक मिनिट दे.</span>
           </div>
         </section>
       )}
@@ -101,9 +66,12 @@ export default function Home() {
       {page === 2 && (
         <section className="section center">
           <div className="content">
+
             <div className="emoji">✨</div>
 
-            <p className="small">JUST A LITTLE SOMETHING...</p>
+            <p className="small">
+              JUST A LITTLE SOMETHING...
+            </p>
 
             <h2>
               There’s a reason I made
@@ -118,6 +86,7 @@ export default function Home() {
             <button onClick={nextPage}>
               Next <span>→</span>
             </button>
+
           </div>
         </section>
       )}
@@ -126,9 +95,12 @@ export default function Home() {
       {page === 3 && (
         <section className="section center">
           <div className="content">
+
             <div className="emoji">🌸</div>
 
-            <p className="small">SOMEONE SPECIAL...</p>
+            <p className="small">
+              SOMEONE SPECIAL...
+            </p>
 
             <h2>
               About someone who caught
@@ -143,6 +115,7 @@ export default function Home() {
             <button onClick={nextPage}>
               Next <span>→</span>
             </button>
+
           </div>
         </section>
       )}
@@ -151,9 +124,12 @@ export default function Home() {
       {page === 4 && (
         <section className="section center">
           <div className="content">
+
             <div className="emoji">🌙</div>
 
-            <p className="small">एक छोटीशी TRY...</p>
+            <p className="small">
+              एक छोटीशी TRY...
+            </p>
 
             <h2 className="marathi-heading">
               तुझ्यासाठी मी एक कविता
@@ -168,60 +144,101 @@ export default function Home() {
             <button onClick={nextPage}>
               कविता <span>❤️</span>
             </button>
+
           </div>
         </section>
       )}
 
-      {/* PAGE 5 - POEM */}
+      {/* PAGE 5 - FULL POEM ON ONE PAGE */}
       {page === 5 && (
         <section className="section poem-section">
 
-          <div className="poem-top">
-            <span>तुझ्यासाठी एक कविता</span>
-            <span>
-              {String(poemIndex + 1).padStart(2, "0")} /{" "}
-              {String(poem.length).padStart(2, "0")}
-            </span>
-          </div>
+          <div className="poem-card">
 
-          <div className="poem-container">
+            <div className="poem-decoration">🌹</div>
 
-            <div className="poem-counter">
-              {String(poemIndex + 1).padStart(2, "0")}
-            </div>
-
-            <div className="poem-line" key={poemIndex}>
-              {poem[poemIndex]}
-            </div>
-
-            <div className="poem-progress">
-              <span
-                style={{
-                  width: `${((poemIndex + 1) / poem.length) * 100}%`,
-                }}
-              ></span>
-            </div>
-
-            <p className="reading">
-              {poemIndex < poem.length - 1
-                ? "वाचत जा..."
-                : "शेवटची ओळ... ❤️"}
+            <p className="small">
+              तुझ्यासाठी...
             </p>
 
-            <button className="poem-button" onClick={nextPoem}>
-              {poemIndex < poem.length - 1 ? "पुढे →" : "शेवट पाहा →"}
+            <h2 className="poem-title">
+              एक छोटीशी कविता
+            </h2>
+
+            <div className="line"></div>
+
+            <div className="poem">
+
+              <p>
+                तुझ्या त्या इंस्टाग्राम च्या पोस्ट मधे ,
+              </p>
+
+              <p>
+                काहीतरी खास जाणवलं,
+              </p>
+
+              <p>
+                एक फोटो पाहिला तुझा,
+              </p>
+
+              <p>
+                आणि नकळत मन फोटो मधे हरवलं… ❤️
+              </p>
+
+              <p>
+                साडीमधे तुझ रूप काही वेगळंच दिसलं,
+              </p>
+
+              <p>
+                नाकातली नथ आणि कपाळावरची चंद्रकोर
+              </p>
+
+              <p>
+                पाहून मन तिथेच थांबलं… 🌙
+              </p>
+
+              <p>
+                खरं तर,
+              </p>
+
+              <p>
+                तुझ्या डोळ्यांत काहीतरी खास आहे,
+              </p>
+
+              <p>
+                जे फोटोमधूनही जाणवल …
+              </p>
+
+              <p>
+                म्हणूनच मनाला सारखं वाटतं,
+              </p>
+
+              <p className="last-line">
+                तुझ्यासोबत बोलावं… ❤️
+              </p>
+
+            </div>
+
+            <div className="line"></div>
+
+            <button onClick={nextPage}>
+              Next <span>→</span>
             </button>
 
           </div>
+
         </section>
       )}
 
       {/* PAGE 6 */}
       {page === 6 && (
         <section className="section center final-page">
+
           <div className="content">
 
-            <div className="big-heart">❤️</div>
+            <div className="big-heart">
+              ❤️
+            </div>
 
             <p className="small">
               AND THAT'S ALL I WANTED TO SAY...
@@ -249,14 +266,19 @@ export default function Home() {
               — फक्त तुझ्यासाठी
             </p>
 
-            <button className="restart" onClick={restart}>
+            <button
+              className="restart"
+              onClick={restart}
+            >
               पुन्हा सुरुवातीपासून ↗
             </button>
 
           </div>
+
         </section>
       )}
 
+      {/* CSS */}
       <style jsx global>{`
 
         * {
@@ -271,146 +293,133 @@ export default function Home() {
         }
 
         body {
-          background: #f8eee9;
-          color: #542f37;
-          font-family:
-            Inter,
-            -apple-system,
-            BlinkMacSystemFont,
-            "Segoe UI",
-            sans-serif;
-        }
+          background: #160F1B;
+          color: #F8E7D8;
 
-        button {
-          font-family: inherit;
+          font-family:
+            Arial,
+            Helvetica,
+            sans-serif;
         }
 
         .site {
           min-height: 100svh;
-          position: relative;
+
           overflow: hidden;
+
+          position: relative;
 
           background:
             radial-gradient(
               circle at 15% 10%,
-              rgba(255, 210, 218, 0.75),
+              rgba(143, 61, 97, 0.45),
               transparent 30%
             ),
             radial-gradient(
               circle at 90% 90%,
-              rgba(220, 188, 150, 0.35),
+              rgba(184, 137, 98, 0.25),
               transparent 35%
             ),
             linear-gradient(
               135deg,
-              #fff8f4 0%,
-              #f8eee9 48%,
-              #f0dfe0 100%
+              #241523 0%,
+              #160F1B 50%,
+              #2A1727 100%
             );
-        }
-
-        .ambient {
-          position: absolute;
-          width: 430px;
-          height: 430px;
-          border-radius: 50%;
-          filter: blur(110px);
-          pointer-events: none;
-          opacity: 0.28;
-        }
-
-        .ambientOne {
-          background: #e6a6b1;
-          top: -250px;
-          left: -160px;
-        }
-
-        .ambientTwo {
-          background: #d9b38a;
-          right: -220px;
-          bottom: -230px;
-        }
-
-        .ambientThree {
-          background: #efc4c9;
-          top: 40%;
-          right: 15%;
-          opacity: 0.13;
         }
 
         .section {
           min-height: 100svh;
+
           width: 100%;
-          padding: 45px 7vw;
+
+          padding: 50px 20px;
 
           display: flex;
+
           align-items: center;
+
           justify-content: center;
 
-          position: relative;
           text-align: center;
         }
 
-        .content {
-          animation: enter 1s ease both;
-          max-width: 1000px;
-        }
-
-        .tiny-top,
-        .poem-top {
-          position: absolute;
-          top: 38px;
-          left: 7vw;
-          right: 7vw;
-
+        .center {
           display: flex;
-          justify-content: space-between;
-
-          color: #9c737a;
-          font-size: 10px;
-          letter-spacing: 0.2em;
+          align-items: center;
+          justify-content: center;
         }
 
-        .overline,
+        .content {
+          width: min(1000px, 100%);
+
+          padding: 35px;
+
+          border-radius: 30px;
+
+          background:
+            rgba(36, 21, 35, 0.55);
+
+          border:
+            1px solid rgba(233, 167, 184, 0.16);
+
+          box-shadow:
+            0 30px 90px rgba(0, 0, 0, 0.35);
+
+          backdrop-filter: blur(15px);
+
+          animation: fadeIn 0.9s ease;
+        }
+
         .small {
-          color: #a06f77;
+          color: #D8A8B8;
+
           font-size: 11px;
+
           letter-spacing: 0.25em;
+
           margin-bottom: 25px;
         }
 
         h1 {
-          font-family: Georgia, "Times New Roman", serif;
+          font-family: Georgia, serif;
+
           font-weight: 400;
 
-          font-size: clamp(60px, 10vw, 130px);
-          line-height: 0.9;
+          font-size:
+            clamp(55px, 9vw, 120px);
 
-          letter-spacing: -0.07em;
+          line-height: 0.95;
 
-          color: #542f37;
+          color: #F8E7D8;
         }
 
         h1 i {
-          color: #a85c6a;
+          color: #E9A7B8;
+
           font-style: normal;
         }
 
         h2 {
-          font-family: Georgia, "Times New Roman", serif;
+          font-family: Georgia, serif;
+
           font-weight: 400;
 
-          font-size: clamp(40px, 6vw, 75px);
-          line-height: 1.05;
+          font-size:
+            clamp(38px, 6vw, 72px);
 
-          color: #542f37;
+          line-height: 1.1;
+
+          color: #F8E7D8;
         }
 
         .description {
           margin-top: 30px;
 
-          color: #89676d;
+          color: #CBB8C4;
+
           font-size: 16px;
+
           line-height: 1.8;
         }
 
@@ -418,158 +427,216 @@ export default function Home() {
           margin-top: 30px;
 
           font-family: Georgia, serif;
-          font-size: 22px;
+
+          font-size: 23px;
+
           line-height: 1.6;
 
-          color: #785960;
+          color: #D6BFCA;
         }
 
         .heart {
-          font-size: 60px;
+          font-size: 65px;
+
           margin-bottom: 20px;
 
-          animation: heartbeat 1.7s ease infinite;
+          animation:
+            heartbeat 1.7s ease infinite;
+
+          filter:
+            drop-shadow(
+              0 0 25px
+              rgba(233, 167, 184, 0.5)
+            );
         }
 
         .emoji {
           font-size: 60px;
+
           margin-bottom: 25px;
 
-          animation: floating 3s ease-in-out infinite;
+          animation:
+            floating 3s ease-in-out infinite;
         }
 
         button {
-          display: inline-flex;
-
-          align-items: center;
-          justify-content: center;
-
-          gap: 20px;
-
           margin-top: 40px;
 
-          border: 1px solid #713f49;
+          padding: 15px 30px;
+
+          border: none;
+
           border-radius: 999px;
 
-          padding: 15px 28px;
+          background: #8F3D61;
 
-          background: #713f49;
           color: white;
 
           font-size: 14px;
 
           cursor: pointer;
 
+          display: inline-flex;
+
+          align-items: center;
+
+          gap: 18px;
+
           transition: all 0.3s ease;
+
+          box-shadow:
+            0 15px 35px
+            rgba(143, 61, 97, 0.35);
         }
 
         button:hover {
-          transform: translateY(-4px);
+          transform:
+            translateY(-4px);
+
+          background: #B34E76;
 
           box-shadow:
-            0 15px 35px rgba(113, 63, 73, 0.25);
-
-          background: #8b5360;
+            0 20px 45px
+            rgba(179, 78, 118, 0.4);
         }
 
         button span {
           font-size: 18px;
         }
 
-        .bottom-note {
-          position: absolute;
-
-          bottom: 35px;
-          left: 7vw;
-          right: 7vw;
-
-          display: flex;
-          align-items: center;
-
-          gap: 15px;
-
-          color: #a1787e;
-          font-size: 10px;
-        }
-
-        .bottom-note div {
-          width: 50px;
-          height: 1px;
-          background: #c9a4a8;
-        }
-
         /* POEM */
 
         .poem-section {
-          flex-direction: column;
+          padding-top: 55px;
+          padding-bottom: 55px;
         }
 
-        .poem-container {
+        .poem-card {
           width: min(900px, 100%);
+
+          padding:
+            55px 60px;
+
+          border-radius: 35px;
+
+          background:
+            linear-gradient(
+              145deg,
+              rgba(42, 23, 39, 0.92),
+              rgba(22, 15, 27, 0.95)
+            );
+
+          border:
+            1px solid
+            rgba(233, 167, 184, 0.2);
+
+          box-shadow:
+            0 35px 100px
+            rgba(0, 0, 0, 0.45);
+
+          animation:
+            poemAppear 1s ease;
         }
 
-        .poem-counter {
-          color: #b07b83;
-          font-size: 11px;
-          letter-spacing: 0.2em;
-          margin-bottom: 30px;
+        .poem-decoration {
+          font-size: 45px;
+
+          margin-bottom: 15px;
         }
 
-        .poem-line {
-          min-height: 180px;
+        .poem-title {
+          margin-bottom: 10px;
 
-          display: flex;
-          align-items: center;
-          justify-content: center;
-
-          padding: 20px;
-
-          font-family: Georgia, "Times New Roman", serif;
-
-          font-size: clamp(32px, 5vw, 65px);
-
-          line-height: 1.25;
-
-          color: #542f37;
-
-          animation: poemIn 0.8s ease both;
+          font-size:
+            clamp(34px, 5vw, 55px);
         }
 
-        .poem-progress {
-          width: min(350px, 80%);
-          height: 2px;
+        .line {
+          width: 100px;
 
-          margin: 30px auto 0;
+          height: 1px;
 
-          background: rgba(132, 76, 87, 0.15);
+          margin: 25px auto;
+
+          background: #E9A7B8;
         }
 
-        .poem-progress span {
-          display: block;
+        .poem {
+          font-family:
+            Georgia,
+            "Noto Serif Devanagari",
+            serif;
 
-          height: 100%;
+          font-size:
+            clamp(19px, 2.1vw, 25px);
 
-          background: #a85c6a;
+          line-height: 1.65;
 
-          transition: width 0.5s ease;
+          color: #F3DFD5;
         }
 
-        .reading {
-          margin-top: 15px;
+        .poem p {
+          margin-bottom: 7px;
 
-          color: #ad858b;
-
-          font-size: 11px;
-          letter-spacing: 0.15em;
+          animation:
+            poemText 0.8s ease both;
         }
 
-        .poem-button {
-          margin-top: 30px;
+        .poem p:nth-child(1) {
+          animation-delay: 0.1s;
+        }
 
-          background: transparent;
-          border: 0;
+        .poem p:nth-child(2) {
+          animation-delay: 0.2s;
+        }
 
-          color: #713f49;
+        .poem p:nth-child(3) {
+          animation-delay: 0.3s;
+        }
+
+        .poem p:nth-child(4) {
+          animation-delay: 0.4s;
+        }
+
+        .poem p:nth-child(5) {
+          animation-delay: 0.5s;
+        }
+
+        .poem p:nth-child(6) {
+          animation-delay: 0.6s;
+        }
+
+        .poem p:nth-child(7) {
+          animation-delay: 0.7s;
+        }
+
+        .poem p:nth-child(8) {
+          animation-delay: 0.8s;
+        }
+
+        .poem p:nth-child(9) {
+          animation-delay: 0.9s;
+        }
+
+        .poem p:nth-child(10) {
+          animation-delay: 1s;
+        }
+
+        .poem p:nth-child(11) {
+          animation-delay: 1.1s;
+        }
+
+        .poem p:nth-child(12) {
+          animation-delay: 1.2s;
+        }
+
+        .last-line {
+          color: #E9A7B8;
+
+          font-size:
+            clamp(22px, 2.5vw, 29px);
+
+          margin-top: 15px !important;
         }
 
         /* FINAL */
@@ -577,26 +644,36 @@ export default function Home() {
         .big-heart {
           font-size: 75px;
 
-          animation: heartbeat 2s ease infinite;
-
           margin-bottom: 20px;
+
+          animation:
+            heartbeat 2s ease infinite;
+
+          filter:
+            drop-shadow(
+              0 0 30px
+              rgba(233, 167, 184, 0.5)
+            );
         }
 
         .divider {
           display: flex;
 
           align-items: center;
+
           justify-content: center;
 
-          gap: 12px;
+          gap: 15px;
 
           margin: 35px auto;
         }
 
         .divider span {
-          width: 55px;
+          width: 60px;
+
           height: 1px;
-          background: #c9a4a8;
+
+          background: #70566A;
         }
 
         .signature {
@@ -606,17 +683,18 @@ export default function Home() {
 
           font-size: 24px;
 
-          color: #a85c6a;
+          color: #E9A7B8;
         }
 
         .restart {
           background: transparent;
 
-          color: #713f49;
+          color: #D6BFCA;
 
-          border: 0;
+          border:
+            1px solid #70566A;
 
-          font-size: 12px;
+          box-shadow: none;
         }
 
         /* FLOATING HEARTS */
@@ -628,18 +706,18 @@ export default function Home() {
 
           font-size: 20px;
 
-          opacity: 0.5;
+          opacity: 0.45;
 
           pointer-events: none;
 
-          z-index: 5;
+          z-index: 10;
 
-          animation: rise 8s linear infinite;
+          animation:
+            rise 8s linear infinite;
         }
 
         .hearts span:nth-child(1) {
           left: 8%;
-          animation-delay: 0s;
         }
 
         .hearts span:nth-child(2) {
@@ -672,33 +750,60 @@ export default function Home() {
           animation-delay: 6s;
         }
 
-        @keyframes enter {
+        /* ANIMATIONS */
+
+        @keyframes fadeIn {
+
           from {
             opacity: 0;
-            transform: translateY(25px);
+            transform:
+              translateY(25px);
           }
 
           to {
             opacity: 1;
-            transform: translateY(0);
+            transform:
+              translateY(0);
           }
+
         }
 
-        @keyframes poemIn {
+        @keyframes poemAppear {
+
           from {
             opacity: 0;
-            transform: translateY(20px);
-            filter: blur(8px);
+            transform:
+              translateY(35px)
+              scale(0.98);
           }
 
           to {
             opacity: 1;
-            transform: translateY(0);
-            filter: blur(0);
+            transform:
+              translateY(0)
+              scale(1);
           }
+
+        }
+
+        @keyframes poemText {
+
+          from {
+            opacity: 0;
+            transform:
+              translateY(12px);
+          }
+
+          to {
+            opacity: 1;
+            transform:
+              translateY(0);
+          }
+
         }
 
         @keyframes heartbeat {
+
           0%,
           100% {
             transform: scale(1);
@@ -707,81 +812,103 @@ export default function Home() {
           50% {
             transform: scale(1.12);
           }
+
         }
 
         @keyframes floating {
+
           0% {
-            transform: translateY(0);
+            transform:
+              translateY(0);
           }
 
           50% {
-            transform: translateY(-10px);
+            transform:
+              translateY(-10px);
           }
 
           100% {
-            transform: translateY(0);
+            transform:
+              translateY(0);
           }
+
         }
 
         @keyframes rise {
+
           0% {
-            transform: translateY(0) rotate(0deg);
+            transform:
+              translateY(0)
+              rotate(0deg);
+
             opacity: 0;
           }
 
           20% {
-            opacity: 0.5;
+            opacity: 0.45;
           }
 
           100% {
-            transform: translateY(-110vh) rotate(360deg);
+            transform:
+              translateY(-110vh)
+              rotate(360deg);
+
             opacity: 0;
           }
+
         }
+
+        /* MOBILE */
 
         @media (max-width: 700px) {
 
           .section {
-            padding: 35px 22px;
+            padding:
+              30px 15px;
           }
 
-          .tiny-top,
-          .poem-top {
-            left: 22px;
-            right: 22px;
-            top: 25px;
-          }
+          .content {
+            padding:
+              30px 18px;
 
-          .bottom-note {
-            left: 22px;
-            right: 22px;
-            bottom: 25px;
+            border-radius:
+              24px;
           }
 
           h1 {
-            font-size: 55px;
+            font-size: 52px;
           }
 
           h2 {
-            font-size: 36px;
+            font-size: 35px;
           }
 
           .special {
             font-size: 19px;
           }
 
-          .poem-line {
-            min-height: 230px;
-            font-size: 30px;
+          .poem-card {
+            padding:
+              38px 20px;
+
+            border-radius:
+              25px;
           }
 
-          .poem-container {
-            padding-top: 30px;
+          .poem {
+            font-size: 18px;
+
+            line-height: 1.65;
           }
 
-          .poem-top {
-            font-size: 8px;
+          .poem p {
+            margin-bottom: 9px;
           }
+
+          .poem-title {
+            font-size: 34px;
+          }
+
         }
 
       `}</style>
