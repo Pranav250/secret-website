@@ -43,7 +43,7 @@ export default function Home() {
             </p>
 
             <h1>
-              Hii Vidhi
+              Hii 
               <br />
               <i>This is for You !!!</i>
             </h1>
