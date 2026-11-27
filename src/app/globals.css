@@ -1,1 +1,115 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #10002b, #240046, #3c096c);
+  color: white;
+}
+
+.home-page {
+  min-height: 100vh;
+  padding: 35px 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.invitation-container {
+  width: 100%;
+  max-width: 1150px;
+  text-align: center;
+}
+
+.banner {
+  width: 100%;
+  overflow: hidden;
+  border: 4px solid #f9c74f;
+  border-radius: 18px;
+  box-shadow: 0 0 30px rgba(255, 193, 7, 0.35);
+}
+
+.banner-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.welcome-section {
+  padding: 35px 15px;
+}
+
+.welcome-section h1 {
+  color: #ffd166;
+  font-size: clamp(24px, 4vw, 38px);
+  margin-bottom: 18px;
+  line-height: 1.5;
+  text-shadow: 2px 2px 8px #000;
+}
+
+.welcome-section p {
+  font-size: clamp(17px, 2.5vw, 23px);
+  color: #fff;
+  margin-bottom: 28px;
+  line-height: 1.7;
+}
+
+.program-button {
+  display: inline-block;
+  padding: 17px 35px;
+  background: linear-gradient(135deg, #ffd166, #fca311, #e85d04);
+  color: #4a102a;
+  font-size: clamp(17px, 2.5vw, 23px);
+  font-weight: bold;
+  text-decoration: none;
+  border: 3px solid #fff0b3;
+  border-radius: 50px;
+  box-shadow: 0 7px 20px rgba(255, 174, 0, 0.35);
+  transition: all 0.3s ease;
+}
+
+.program-button:hover {
+  transform: translateY(-5px) scale(1.04);
+  background: linear-gradient(135deg, #fff0b3, #ffb703);
+  box-shadow: 0 10px 30px rgba(255, 193, 7, 0.6);
+}
+
+.footer-text {
+  margin-top: 35px;
+}
+
+.footer-text p {
+  color: #ffe8a1;
+  font-size: 17px;
+  margin-bottom: 10px;
+}
+
+.footer-text span {
+  color: #ffd166;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+@media (max-width: 600px) {
+  .home-page {
+    padding: 15px 10px;
+  }
+
+  .banner {
+    border-width: 2px;
+    border-radius: 10px;
+  }
+
+  .welcome-section {
+    padding: 25px 5px;
+  }
+
+  .program-button {
+    padding: 14px 22px;
+    width: 100%;
+    max-width: 340px;
+  }
+}
