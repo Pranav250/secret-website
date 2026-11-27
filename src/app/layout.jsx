@@ -12,8 +12,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "एक छोटीशी गोष्ट ♡",
-  description: "काही गोष्टी शब्दांत नाही, तर मनात सुंदर दिसतात.",
+  title: "राधाकृष्ण सुवर्ण महोत्सव",
+  description: "राधाकृष्ण नृत्य पथकाचा ४० वा वर्धापन दिन सोहळा",
 };
 
 export default function RootLayout({ children }) {
