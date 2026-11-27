@@ -1,36 +1,48 @@
+import Image from "next/image";
+import "./globals.css";
 
 export default function Home() {
   return (
-    <main>
-      <section className="program" id="program">
+    <main className="home-page">
 
-        <h2>🌺 कार्यक्रमाची संपूर्ण माहिती 🌺</h2>
+      <div className="invitation-container">
 
-        <div className="content">
+        {/* Anniversary Banner */}
+        <div className="banner">
+          <Image
+            src="/banner.png"
+            alt="राधा कृष्ण नृत्य पाठक ४० वा वर्धापन दिन"
+            width={1600}
+            height={900}
+            priority
+            className="banner-image"
+          />
+        </div>
 
-          <h3>श्री राधा-कृष्ण नृत्य पथक नाच मंडळ</h3>
+        {/* Welcome Text */}
+        <div className="welcome-section">
 
-          <p>📅 तारीख : २६ डिसेंबर २०२६</p>
-
-          <p>⏰ वेळ : कार्यक्रमाची वेळ</p>
+          <h1>
+            🎉 चला, साजरा करूया ४० वर्षांचा उत्सव! 🎉
+          </h1>
 
           <p>
-            📍 स्थळ : कोतवाल रेवाडी, ता. पोलादपूर,
-            जि. रायगड
+            कार्यक्रमाची संपूर्ण माहिती पाहण्यासाठी खाली क्लिक करा.
           </p>
 
-          <br />
+          {/* Clickable Button */}
+          <a href="/program" className="program-button">
+            🌺 कार्यक्रमाची माहिती पाहा 🌺
+          </a>
 
-          <h3>🎉 कार्यक्रमाचे आकर्षण 🎉</h3>
-
-          <p>✦ उद्घाटन समारंभ</p>
-          <p>✦ राधा-कृष्ण नृत्य सादरीकरण</p>
-          <p>✦ सांस्कृतिक कार्यक्रम</p>
-          <p>✦ मान्यवरांचा सत्कार</p>
-          <p>✦ ४० व्या वर्धापन दिनाचा सोहळा</p>
+          <div className="footer-text">
+            <p>आपली उपस्थिती हीच आमच्यासाठी आनंदाची पर्वणी!</p>
+            <span>श्री राधा-कृष्ण सेवा संस्था</span>
+          </div>
 
         </div>
-      </section>
+      </div>
+
     </main>
   );
 }
